@@ -46,7 +46,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 maxLength: 50,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please entera title';
+                    return 'Please enter a title';
                   }
                   return null;
                 },
