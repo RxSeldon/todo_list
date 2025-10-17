@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'models/task.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({super.key});
@@ -21,9 +22,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   void _saveTask() {
     if (_formKey.currentState!.validate()) {
-      print('Task Saved!');
-      print('Title: ${_titleController.text}');
-      print('Description: ${_descriptionController.text}');
+      final newTask = Task(
+        title: _titleController.text.trim(),
+        description: _descriptionController.text.trim().isEmpty
+            ? null
+            : _descriptionController.text.trim(),
+      );
+      Navigator.pop(context, newTask);
     }
   }
 
