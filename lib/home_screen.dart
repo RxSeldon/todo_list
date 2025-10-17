@@ -60,13 +60,37 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
           : ListView.builder(
+              padding: const EdgeInsets.all(12.0),
               itemCount: _tasks.length,
               itemBuilder: (context, index) {
                 final task = _tasks[index];
-                return ListTile(
-                  leading: const Icon(Icons.check_box_outline_blank),
-                  title: Text(task.title),
-                  subtitle: Text(task.description ?? 'No description'),
+                return Card(
+                  elevation: 8,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 6,
+                      horizontal: 16,
+                    ),
+                    leading: const CircleAvatar(
+                      backgroundColor: Color.fromARGB(255, 92, 93, 95),
+                      child: Icon(Icons.task_alt, color: Colors.white),
+                    ),
+                    title: Text(
+                      task.title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    subtitle: Text(
+                      task.description ?? 'No Description',
+                      style: const TextStyle(color: Colors.black54),
+                    ),
+                  ),
                 );
               },
             ),
